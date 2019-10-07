@@ -1,0 +1,16 @@
+.slideshow{
+    height:600px;
+    
+}
+
+.icon{
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+#carouselExampleControls{
+    padding: 10px;
+}
+.txt-col{
+    color:black;
+}
