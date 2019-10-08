@@ -1,4 +1,5 @@
 const Docter = require('../Models/Doctor');
+const db = require('../Database/mongoConn')
 const jwt = require('jsonwebtoken');
 const config =  require('../Config/keys');
 
@@ -58,6 +59,20 @@ var Auth = {
     },
 
     signup: async function(req,res){
+        let post = {uname:"Aman",umobno:9930335323,ueid:"amanpatwa999@gmail.com",uaddr:"xjzgsxs"}
+        var query = "Insert INTO user SET ?";
+        let sql = db.query(query, post, (err, result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                console.log("Data added")
+            }
+        })
+        let q = "Select * FROM user"
+        db.query(q,(err,result)=>{
+            console.log(result)
+        })
       
     }
 
