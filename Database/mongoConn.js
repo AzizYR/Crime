@@ -1,19 +1,40 @@
 'use strict';
 
-const mongoose = require('mongoose');
-var dbConfig = require('../Config/db');
+const mysql = require('mysql');
 
-console.log('trying to connect to db..');
+const db = mysql.createConnection({
+    host : "localhost",
+    user : "root",
+    database : "crime"
+})
 
-mongoose.connect(dbConfig.url,{
-    useNewUrlParser: true
-});
+//connect
 
-var mongoConn = mongoose.connection;
+db.connect((err) => {
+    if(err){
+        console.log("connection to sql failed");
+        
+    }
+    else{
+        console.log("Connection Established with mySql");     
+    }
+})
 
-mongoConn.on('error', console.error.bind(console, 'Connection error: '));
-mongoConn.once('open', function(callback) {
-    console.log('Successfully connected to MongoDB /.');
-});
 
-module.exports = mongoConn;
+// const mongoose = require('mongoose');
+// var dbConfig = require('../Config/db');
+
+// console.log('trying to connect to db..');
+
+// mongoose.connect(dbConfig.url,{
+//     useNewUrlParser: true
+// });
+
+// var mongoConn = mongoose.connection;
+
+// mongoConn.on('error', console.error.bind(console, 'Connection error: '));
+// mongoConn.once('open', function(callback) {
+//     console.log('Successfully connected to MongoDB /.');
+// });
+
+module.exports = db;

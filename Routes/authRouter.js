@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-var {createCookie} = require('../Controllers/authController');
+var createCookie = require('../Controllers/authController');
 
 
 
@@ -15,5 +15,7 @@ router.get('/signup',(req,res)=>{
 router.get('/login',(req,res)=>{
     res.sendFile('/login.html', { root: path.join(__dirname, '../pages/html') });    
 });
+
+router.post('/signup',createCookie.signup);
 
 module.exports=router;
