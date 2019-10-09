@@ -1,3 +1,8 @@
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
 .slideshow{
     height:600px;
     
@@ -14,3 +19,51 @@
 .txt-col{
     color:black;
 }
+
+.card{
+    transition: .5s ease;   
+}
+
+.percent{
+    width: 100%;
+    height: 350px;
+    position: relative;
+    background-color: #fd7272;
+}
+
+.clip{
+    position:absolute;
+    clip: rect(0px,20px,20px,0px);
+}
+
+.percent-pad{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+/* .nav-color{
+    background-color:silver ;
+} */
+
+.circle{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(76, 77, 78);
+    border: 10px solid rgb(76, 164, 247);
+}
+
+.footer{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    background-color:rgba(5, 5, 59, 1);
+}
+
+.about{
+    width: 100%;
+    height:400px;
+    position: relative;
+
+}
+
