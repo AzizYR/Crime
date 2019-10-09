@@ -59,7 +59,7 @@ var Auth = {
     },
 
     signup: async function(req,res){
-        let post = {uname:"Aman",umobno:9930335323,ueid:"amanpatwa999@gmail.com",uaddr:"xjzgsxs"}
+        let post = {name:"Aman",mobno:"9082129961",email:"amanpatwa999@gmail.com",addr:"xjzgsxs",psw:"aman"}
         var query = "Insert INTO user SET ?";
         let sql = db.query(query, post, (err, result)=>{
             if(err){
@@ -69,12 +69,36 @@ var Auth = {
                 console.log("Data added")
             }
         })
-        let q = "Select * FROM user"
-        db.query(q,(err,result)=>{
-            console.log(result)
-        })
+        // let q = "Select * FROM user"
+        // db.query(q,(err,result)=>{
+        //     if(err){
+        //       console.log(err)
+        //     }
+        //     else{
+        //     console.log(result)
+        //     }
+        // })
       
-    }
+    },
+    signIn: async function(req,res){
+      let username=req.body.username;
+      let psw=req.body.password;
+      console.log(username,psw)
+      let query=`SELECT * from user WHERE name=? and psw=?`
+      let sql=db.query(query,[username,psw],(err,result)=>{
+        if(err)
+        {
+          throw err;
+        }
+        else
+        {
+          console.log(result)
+          res.send(result)
+        }
+      })
+    },
+    
+
 
     // sendEmail : function (userEmail){
 
