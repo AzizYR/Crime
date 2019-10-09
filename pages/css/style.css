@@ -67,3 +67,18 @@ body{
 
 }
 
+.btn {
+    border-radius: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: white;
+    border-color: #286287;
+    background: #286287;
+}
+
+.w300 {
+    width: 100%;
+    height: 40px;
+    background-color: #d3d3d3;
+    color: #696969;
+}

@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+// // const mongoose = require('mongoose');
 
-var mongoConn = require('../Database/mongoConn');
+// var mongoConn = require('../Database/mongoConn');
 
-var doctor = mongoose.Schema({
-},{
-    strict : false,
-});
+// var doctor = mongoose.Schema({
+// },{
+//     strict : false,
+// });
 
-module.exports = mongoose.model('doctor',doctor,'doctor');
+// module.exports = mongoose.model('doctor',doctor,'doctor');
