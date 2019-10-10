@@ -10,9 +10,12 @@ var crime = {
          place:req.body.place,
          details:req.body.details,
          date :req.body.date,
-         time:req.body.time
+         time:req.body.time,
+         addr:req.body.addr,
+         firtype:req.body.firtype,
+         number:req.body.number
         };
-         query="INSERT INTO fir SET ?"
+         query="INSERT INTO fir SET ?";
         
         let sql=db.query(query,data,(error,result)=>
         {
@@ -27,7 +30,21 @@ var crime = {
                 
             }
         });
+    },
+    getfirdetails:async function(req,res){
+        let query="SELECT * from fir where userid=fir.uid";
+        let sql=db.query(query,(error,result)=>{
+            if(error)   
+            {
+                throw error;
+            }
+            else
+            {
+                console.log(result);
+            }
+        })
     }
+
 
 }
 module.exports = crime

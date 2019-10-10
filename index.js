@@ -34,6 +34,6 @@ app.use('/auth',authRouter);
 app.use('/crime',crimeRouter);
 
 
-app.listen(process.env.PORT || 6000, function() {
-    console.log("Express server listening on port " + 6000);
+app.listen(process.env.PORT || 8008, function() {
+    console.log("Express server listening on port " + 8008);
 });      
