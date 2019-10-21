@@ -3,6 +3,9 @@ body{
     font-weight: 300;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 .slideshow{
     height:600px;
     
@@ -28,30 +31,24 @@ body{
     width: 100%;
     height: 350px;
     position: relative;
-    background-color: #fd7272;
+    background-color: #101010;
 }
 
-.clip{
-    position:absolute;
-    clip: rect(0px,20px,20px,0px);
-}
 
 .percent-pad{
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
-/* .nav-color{
-    background-color:silver ;
-} */
 
-.circle{
+
+/* .circle{
     position: relative;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     background-color: rgb(76, 77, 78);
     border: 10px solid rgb(76, 164, 247);
-}
+} */
 
 .footer{
     width: 100%;
@@ -67,3 +64,93 @@ body{
 
 }
 
+.btn {
+    border-radius: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: white;
+    border-color: #286287;
+    background: #286287;
+}
+
+.w300 {
+    width: 100%;
+    height: 40px;
+    background-color: #d3d3d3;
+    color: #696969;
+}
+
+svg {
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
+
+}
+svg circle{
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #191919;
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+
+svg circle:nth-child(2)
+{
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+svg:nth-child(1) circle:nth-child(2)
+{
+    stroke-dashoffset:calc(440 - (440*90)/100);
+    stroke: #00ff43;
+}
+svg:nth-child(2) circle:nth-child(2)
+{
+    stroke-dashoffset:calc(440 - (440*80)/100);
+    stroke: #00a1ff;
+}
+svg:nth-child(3) circle:nth-child(2)
+{
+    stroke-dashoffset:calc(440 - (440*44)/100);
+    stroke: #ff04f7;
+}
+svg:nth-child(4) circle:nth-child(2)
+{
+    stroke-dashoffset:calc(440 - (440*69)/100);
+    stroke: #ff0037;
+}
+
+
+
+.covering:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.5);
+    transition: 0.5s;
+}
+
+.insidecircle{
+    font-weight: 700;
+    color: #777;
+    font-size: 40px;
+    transition: 0.5s;
+    text-align: center;
+    justify-content: center;
+}
+
+text{
+    font-size: 25px;
+}
+/* .new
+{
+    position: relative;
+    border-radius: 50%;
+    box-shadow: inset 0 0 50px #000;
+} */
+
+.txt-col:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 10px rgba(0,0,0,.5);
+    transition: 0.5s;
+}

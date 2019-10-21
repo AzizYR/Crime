@@ -33,6 +33,6 @@ app.use('/auth',authRouter);
 app.use('/doctor',doctorRouter);
 
 
-app.listen(process.env.PORT || 8000, function() {
-    console.log("Express server listening on port " + 8000);
+app.listen(process.env.PORT || 6000, function() {
+    console.log("Express server listening on port " + 6000);
 });      
