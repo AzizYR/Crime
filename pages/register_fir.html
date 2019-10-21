@@ -14,6 +14,7 @@
     <!-- s<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="../pages//css/style.css">
     <title>Hello, world!</title>
+    <script src="work.js"></script>
 </head>
 
 <body>
@@ -34,12 +35,13 @@
                     </label>
                     <div class="form-group">
                         <div>
-                            <select class="mdb-select md-form w300 rounded"
+                            <!-- <select class="mdb-select md-form w300 rounded"
                                 style="border-color: #d3d3d3;margin-top: 0px;color: black;" id="inputMain">
                                 <option value="" disabled selected>&nbsp;FIR type</option>
                                 <option value="1">&nbsp;Rape</option>
                                 <option value="2">&nbsp;Crime</option>
-                            </select>
+                            </select> -->
+                            <label for="" class="mdb-select md-form w300 rounded"style="padding:6px 12px;">FIR type: <span id="firType">Crime</span></label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -133,6 +135,7 @@
         $('#datetimepicker1').datetimepicker();
     });
 </script>
+
 
 </body>
 
