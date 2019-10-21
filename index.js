@@ -7,10 +7,11 @@ var path = require('path');
 
 var indexRouter = require('./Routes/indexRouter');
 var authRouter = require('./Routes/authRouter');
-var doctorRouter = require('./Routes/doctorRouter');
+var crimeRouter = require('./Routes/crimeRouter');
 
 var {verifyUser} = require('./Controllers/authController');
 var {dashboard} = require('./Controllers/doctorController');
+var {crime} = require('./Controllers/crimeController');
 
 var app = express();
 app.use(morgan('dev'));
@@ -28,11 +29,11 @@ app.use(express.static(path.join(__dirname,'pages')));
 var db = require('./Database/mongoConn');
 
 //token checking middleware
-app.use('/',verifyUser,indexRouter);
+app.use('/',indexRouter);
 app.use('/auth',authRouter);
-app.use('/doctor',doctorRouter);
+app.use('/crime',crimeRouter);
 
 
-app.listen(process.env.PORT || 6000, function() {
-    console.log("Express server listening on port " + 6000);
+app.listen(process.env.PORT || 8008, function() {
+    console.log("Express server listening on port " + 8008);
 });      
