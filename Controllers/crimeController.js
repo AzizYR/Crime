@@ -43,8 +43,55 @@ var crime = {
                 console.log(result);
             }
         })
-    }
+    },
+    NotSolved:async function(req,res){
+        var uid=req.body.userid;
+        let query="SELECT * from fir where uid=uid and status='NOT SOLVED' ";
+        let sql=db.query(query,(error,result)=>
+        {
+            if(error)
+            {
+                throw error;
+            }
+            else
+            {
+                console.log(result);
+            }
+        });
+    },
+    InProgress:async function(req,res){
+        var uid=req.body.userid;
+        let query="SELECT * from fir where uid=uid and status='INPROGRESS' ";
+        let sql=db.query(query,(error,result)=>
+        {
+            if(error)
+            {
+                throw error;
+            }
+            else
+            {
+                console.log(result);
+            }
+        });
+    },
+    Solved:async function(req,res){
+        var uid=req.body.userid;
+        let query="SELECT * from fir where uid=uid and status='SOLVED' ";
+        let sql=db.query(query,(error,result)=>
+        {
+            if(error)
+            {
+                throw error;
+            }
+            else
+            {
+                console.log(result);
+            }
+        });
+    },
+    
 
 
 }
+
 module.exports = crime
