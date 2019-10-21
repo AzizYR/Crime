@@ -1,16 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ADMIN</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <title>Admin</title>
+
+    <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="../pages/css/admin.css">
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 
 </head>
+
 <body>
-    
+    <div class="bckdrop">
+        <!-- <img src="../pages/images/backgrnd.jpg" alt=""> -->
+        <div class="container pt-5 blur">
+            <div class="wrapper shadow p-3 mb-5 bg-white rounded">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>DOB</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Mobile No</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Akshay</td>
+                        <td>Agrawal</td>
+                        <td>12-12-12</td>
+                        <td>Cave</td>
+                        <td>askdjf.asdcom</td>
+                        <td>43345345</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Aman</td>
+                        <td>Patwa</td>
+                        <td>12-1-212-</td>
+                        <td>Cave +1</td>
+                        <td>sfsdcomc</td>
+                        <td>345353453</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Abhi</td>
+                        <td>Thummar</td>
+                        <td>!@</td>
+                        <td>Station</td>
+                        <td>asdasd</td>
+                        <td>a34543</td>
+                    </tr>
+
+                    <tr>
+                        <td>User ID</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>DOB</td>
+                        <td>Address</td>
+                        <td>Email</td>
+                        <td>Mobile No</td>
+                    </tr>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
