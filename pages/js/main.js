@@ -1,3 +1,17 @@
+var firtype3
+$(document).ready(function(req,res){
+    if(window.location.pathname == '/registerFir'){
+        var firtype3 = localStorage.getItem("firType")
+        console.log("Firtype"+firtype3)
+        var getObj = getCookie()
+        console.log(getObj)
+        $('#inputName').val(getObj.user.name)
+        $('#inputNumber').val(getObj.user.mobno)
+        $('#inputFirType').val(firtype3)
+
+    }
+})
+
 function signup(){
     var name = $('#orangeForm-name').val()
     var email = $('#orangeForm-email').val()
@@ -13,12 +27,13 @@ function signup(){
     console.log(data);
     
     $.ajax({
-        url: "http://localhost:8008/auth/signup",
+        url: "/auth/signup",
         type: 'POST',
         data: JSON.stringify(data),
         dataType: 'json',
         contentType: 'application/json',
         success: function (res) {
+            console.log("Response"+JSON.stringify(res))
             if(res.success){
                 alert(res.message)
             }
@@ -41,7 +56,7 @@ function login(){
     console.log(data);
     
     $.ajax({
-        url: "http://localhost:8008/auth/signin",
+        url: "/auth/signin",
         type: 'POST',
         data: JSON.stringify(data),
         dataType: 'json',
@@ -84,7 +99,7 @@ function register_fir() {
     }
 
     $.ajax({
-        url: "http://localhost:8008/crime/registerFir",
+        url: "/crime/registerFir",
         type: 'POST',
         data: JSON.stringify(register_fir),
         dataType: 'json',
@@ -100,83 +115,30 @@ function register_fir() {
         }
     })
 
-    // if (isNaN(number) || number.length != 10) {
-    //     alert("Please Enter Valid Number");
-    //     return;
-    // }
-    // if (alternateNumber && (alternateNumber.length != 10 || isNaN(alternateNumber) || alternateNumber == number)) {
-    //     if (alternateNumber == number) {
-    //         alert("Alternate number should be different")
-    //         return
-    //     }
-    //     else {
-    //         alert("Please Enter Valid Alternate Number")
-    //         return;
-    //     }
-    // }
+}
 
-    // if(gender != '1' && gender!= '2'){
-    //     alert("Please Enter Your Gender")
-    //     return
-    // }
-    // if (cat == "You are a?" || !name  || !city) {
-    //     alert("Please Provide All The Details");
-    //     return;
-    // }
-    // if(cat == '1'){
-    //     if(alternateNumber){
-    //         loginMainDetails.doctor['alternateNumber'] = alternateNumber
-    //     }
-    //     loginMainDetails['category'] = CATEGORIES.DOCTOR
-    //     loginMainDetails.doctor['name'] = name
-    //     loginMainDetails.doctor['number'] = number
-    //     loginMainDetails.doctor['gender'] = gender
-    //     loginMainDetails.doctor['city'] = city
-    //     console.log(loginMainDetails)
-    //     $('#addClinic').modal('hide')
-    //     $('#verifyOtp').modal('show')
+async function getCrimeDetails(value){
+    // var value = $('.card').attr('val')
+    console.log("value"+value)
+    localStorage.setItem("firType",value)
+    // $('#inputFirType').attr('value')
+    // console.log(val)
+    var userObj = await getCookie()
+    if(userObj.user){
+        // console.log("dklsf"+$('#inputFirType').attr(['value']))
+        window.location.href = '/registerFir'
+    }
+    else{
+        alert("Please Login to go ahead")
+    }
 
-    //     var data = {
-    //         "mobile": number
-    //     }
+    // window.location.replace('/registerFir')
+}
 
-    //     generateOtp(data);
-    //     register();
-
-
-    // }
-    // else if(cat== '2'){
-    //     if(alternateNumber){
-    //         loginMainDetails.doctor['alternateNumber'] = alternateNumber
-    //     }
-    //     loginMainDetails['category'] = CATEGORIES.DOCTOR_WITH_CLICNIC;
-    //     loginMainDetails.doctor['name'] = name;
-    //     loginMainDetails.doctor['number'] = number;
-    //     loginMainDetails.doctor['gender'] = gender;
-    //     loginMainDetails.doctor['city'] = city;
-    //     console.log(loginMainDetails)
-
-    //     $('#verifyOtp').modal('hide')
-    //     $('#addClinic').modal('show')
-
-    //     var data = {
-    //         "mobile": number
-    //     }
-
-
-
-    //     // var settings = {
-    //     //     "async": true,
-    //     //     "crossDomain": true,
-    //     //     "url": "https://control.msg91.com/api/sendotp.php?otp=1234&sender=$senderid&message=Your otp is 1234&mobile="+number+"&authkey=297047A6xLaSwM25d9614b0",
-    //     //     "type": "POST",
-    //     //     "dataType": "json"
-    //     //   }
-
-    //     //   $.ajax(settings).done(function (response) {
-    //     //     console.log(response);
-    //     //   });
-
-
-    // }
+function getCookie(){
+    var cookie = unescape(document.cookie)
+    var user1 = cookie.split(';')
+    var userO = user1[1].split('=')
+    var userObj = JSON.parse(userO[1])
+    return userObj
 }

@@ -6,7 +6,7 @@ const config =  require('../Config/keys');
 // const nodemailer = require('nodemailer');
 var _ = require('underscore');
 
-var unsecureRoutes = ['/auth/login','/auth/signup','/doctor/register','/doctor/login','/doctor/verifyOtp','/doctor/generateOtp']
+var unsecureRoutes = ['/auth/login','/auth/signup']
 
 var Auth = {
 
@@ -16,15 +16,19 @@ var Auth = {
 
             // if(!res.id) res.id = 'dummy';
 
-            jwt.sign({ id:res.locals.doctor._id },config.secret,(err,token)=>{
+            jwt.sign({ id:res.locals.doctor.userid },config.secret,(err,token)=>{
 
                 if(err) return res.send({'error signing cookie':err});
+                let user={
+                  'token':token,
+                  'user':res.locals.doctor
+                }
 
-                res.cookie('token', token ,{ /*expires: new Date(Date.now() + 900000),*/path:'/', httpOnly : false})
+                res.cookie('user', JSON.stringify(user) ,{ /*expires: new Date(Date.now() + 900000),*/path:'/', httpOnly : false})
                 .send({
                     success:true,
-                    doctor: res.locals.doctor,
-                    clinic : (res.locals.clinic)?(res.locals.clinic):([]),
+                    user: res.locals.doctor,
+                    message: "Data Added"
                 });
 
             });
@@ -58,23 +62,37 @@ var Auth = {
         });
     },
 
-    signup: async function(req,res){
-        let post = {name:req.body.name,mobno:req.body.mobno,email:req.body.email,psw:req.body.password}
+    signup: async function(req,res,next){
+      try{
+        
+        let post = {name:req.body.name,mobno:req.body.mobno,email:req.body.email,psw:req.body.pass}
         var query = "Insert INTO user SET ?";
         let sql = db.query(query, post, (err, result)=>{
             if(err){
                 throw err
-                res.json({
-                  message:"Error"
-                })
+               
             }
             else{
-                console.log("Data added")
-                res.json({
-                  message:"Data added"
+                // console.log("Data added",sql.values)
+                
+                sql2 = db.query("SELECT * FROM user WHERE email = ?",[req.body.email],(err,result)=>{
+                  if(err) throw err
+                  else{
+                    res.locals.doctor = result[0]
+                    // console.log("Result",result[0])
+                    next()
+                  }
                 })
+                
             }
         })
+      }
+      catch(err){
+        res.json({
+          success:false,
+          message:"Error"
+        })
+      }
         // let q = "Select * FROM user"
         // db.query(q,(err,result)=>{
         //     if(err){
