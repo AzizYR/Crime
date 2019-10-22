@@ -12,6 +12,10 @@ $(document).ready(function(req,res){
     }
 })
 
+function openLogin(){
+    $('#modalLoginForm').modal('show')
+}
+
 function signup(){
     var name = $('#orangeForm-name').val()
     var email = $('#orangeForm-email').val()
