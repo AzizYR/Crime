@@ -14,7 +14,7 @@ var createCookie = require('../Controllers/authController');
 
 
 
-router.post('/signup',createCookie.signup,createCookie.createCookie);
-router.post('/signin',createCookie.signIn);
+router.post('/signup',createCookie.signup);
+router.post('/signin',createCookie.signIn,createCookie.createCookie);
 
 module.exports=router;

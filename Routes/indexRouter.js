@@ -11,4 +11,8 @@ const router = express.Router(),
               res.sendFile('/register_fir.html',{ root: path.join(__dirname, '../pages') })
           })
 
+          router.get('/userDetails',(req,res)=>{
+              res.sendFile('/mainpage.html',{ root: path.join(__dirname, '../pages') })
+          })
+
 module.exports=router;

@@ -75,14 +75,17 @@ var Auth = {
             else{
                 // console.log("Data added",sql.values)
                 
-                sql2 = db.query("SELECT * FROM user WHERE email = ?",[req.body.email],(err,result)=>{
-                  if(err) throw err
-                  else{
-                    res.locals.doctor = result[0]
+                // sql2 = db.query("SELECT * FROM user WHERE email = ?",[req.body.email],(err,result)=>{
+                //   if(err) throw err
+                //   else{
+                //     res.locals.doctor = result[0]
                     // console.log("Result",result[0])
-                    next()
-                  }
-                })
+                    res.json({
+                      success:true,
+                      message:"Sign Up Successfull"
+                    })
+                  
+                
                 
             }
         })
@@ -104,27 +107,36 @@ var Auth = {
         // })
       
     },
-    signIn: async function(req,res){
+    signIn: async function(req,res,next){
       let username=req.body.email;
       let psw=req.body.pass;
       console.log(username,psw)
-      let query=`SELECT * from user WHERE name=? and psw=?`
+      try{
+      let query=`SELECT * from user WHERE email=? and psw=?`
       let sql=db.query(query,[username,psw],(err,result)=>{
         if(err)
         {
           throw err;
-          res.json({
-            message:"UnSuccessfull"
-          })
+          
         }
         else
         {
           console.log(result)
-          res.json({
-            message:"Successfull"
-          })
+          res.locals.doctor = result[0]
+          next()
+          // res.json({
+          //   success:true,
+          //   message:"Successfull"
+          // })
         }
       })
+    }
+    catch(err){
+      res.json({
+        success:false,
+        message:"UnSuccessfull"
+      })
+    }
     },
     
 
