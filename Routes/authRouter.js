@@ -12,11 +12,9 @@ var createCookie = require('../Controllers/authController');
 // });
 
 
-router.get('/login',(req,res)=>{
-    res.sendFile('/login.html', { root: path.join(__dirname, '../pages/html') });    
-});
 
-router.post('/signup',createCookie.signup);
+
+router.post('/signup',createCookie.signup,createCookie.createCookie);
 router.post('/signin',createCookie.signIn);
 
 module.exports=router;

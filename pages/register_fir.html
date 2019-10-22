@@ -12,26 +12,31 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- s<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-    <link rel="stylesheet" href="../pages//css/style.css">
-    <title>Hello, world!</title>
-    <script src="work.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Register Fir</title>
+    <!-- <script src="work.js"></script> -->
 </head>
 
-<body>
+<body style="background-image: url( https://designshack.net/wp-content/uploads/best-subtle-black-white-background-textures.jpg);">
+    
     <div class="body_part container">
         <div class="row mt-4">
-            <div class="col-md-8 mt-4">
-                <img src="../pages/images/brand.jpg" class="img-thumbnail" alt="">
-                <h3>Enter Your FIR Here.
-                </h3>
-                <p>All Your Problems Has One Solution, Register An Fir And Wait For The Case To Solve
-                </p>
-                <br>
+            <div class="col-md-8 mt-4"">
+                <div style="margin-top:4%;background-color: darkgreen;">
+                    <img src="../pages/images/brand.jpg" class="img-thumbnail" alt="">
+                    <h3 style="color:#120d5c;text-align: center;padding:20px;border-bottom:3px solid black;">
+                        Register Your Fir
+                    </h3>
+                        <p style="color:#120d5c;text-align: center;font-size:25px;">
+                            Every criminal deserves a punishment.
+                        </p>
+                        <br>
+                </div>
             </div>
             <div class="col-md-4" style="margin: 0 auto; margin-bottom: 10px;">
                 <form style="width: 100%;">
                     <label>
-                        <h2>Enter Details.</h2>
+                        <h2 style="color:burlywood;">Enter Details.</h2>
                     </label>
                     <div class="form-group">
                         <div>
@@ -41,14 +46,18 @@
                                 <option value="1">&nbsp;Rape</option>
                                 <option value="2">&nbsp;Crime</option>
                             </select> -->
-                            <label for="" class="mdb-select md-form w300 rounded"style="padding:6px 12px;">FIR type: <span id="firType">Crime</span></label>
+                        
+                            <label for="inputFirType">FirType:</label>
+                            <input class="form-control w300 rounded" id="inputFirType" placeholder="Fir Type" value="kdfkds" required>
+                            <!-- <label id="inputFirType" class="mdb-select md-form w300 rounded"style="padding:6px 12px;">FIR type: <span id="firType">Aman</span></label> -->
                         </div>
                     </div>
                     <div class="form-group">
+                            <label for="inputName">Name:</label>
                         <input class="form-control w300 rounded" id="inputName" placeholder="Full Name*" required>
                     </div>
                     <div class="form-group">
-                        <!-- <label for="exampleInputPassword1">Password</label> -->
+                        <label for="inputNumber">Mobile Number</label>
                         <input class="form-control w300 rounded" id="inputNumber" aria-describedby="mobileHelp"
                             placeholder="10 Digit Mobile Number*" required>
                         <!-- <small id="mobileHelp" class="form-text text-muted" style="color:black!important;"><b>OTP Verification Required.</b></small> -->
@@ -67,6 +76,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+                            <label for="inputCity">City:</label>
                         <input class="form-control w300 rounded" id="inputCity" placeholder="City Name" required>
                     </div>
                     <div class="form-group">
@@ -121,7 +131,7 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-        <script src="./js/main.js"></script>
+        <script src="./js/main.js"></script>    
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker3').datetimepicker({
