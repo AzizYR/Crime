@@ -44,7 +44,7 @@
             </li>
 
             <li class="nav-item ">
-                <a class="nav-link" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+                <a class="nav-link" href="" id="loginModal" onclick="openLogin()" data-toggle="modal">Login</a>
             </li>
         </ul>
     </nav>
@@ -77,7 +77,7 @@
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-default" onclick="login()">Login</button>
                     <span> / </span>
-                    <a href="" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
+                    <a href="" data-toggle="modal" onclick="openSignUp()">Sign Up</a>
                 </div>
             </div>
         </div>
