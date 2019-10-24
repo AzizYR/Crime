@@ -46,7 +46,8 @@ var crime = {
     }
     },
     getfirdetails:async function(req,res){
-        let query="SELECT * from fir where userid=fir.uid";
+        try{
+        let query="SELECT * from fir";
         let sql=db.query(query,(error,result)=>{
             if(error)   
             {
@@ -54,9 +55,19 @@ var crime = {
             }
             else
             {
-                console.log(result);
+                res.json({
+                    success:true,
+                    data:result
+                })
             }
         })
+    }
+    catch(err){
+        res.json({
+            success:false,
+            message:err
+        })
+    }
     },
     status:async function(req,res){
         try{
@@ -84,6 +95,89 @@ var crime = {
             message:err
         })
     }
+    },
+    insertStatus: async function(req,res){
+        try{
+            var data = req.body.data
+            var status = req.body.status
+            console.log("data"+JSON.stringify(data,undefined,3))
+            let query = "UPDATE fir SET status=? WHERE id=?"
+            let sql = db.query(query,[status,data.id],(err,result)=>{
+                if(err) throw err
+                else{
+                    console.log(result)
+                    res.json({
+                        status:true,
+                        message:"Status Changed"
+                    })
+                }
+            })
+        }
+        catch(err){
+            res.json({
+                status:false,
+                message:"Error"
+            })
+        }
+
+    },
+
+    policeStatus: async function(req,res){
+        try{
+            var data = req.body.data
+            var status = req.body.status
+            console.log("data"+JSON.stringify(data,undefined,3))
+            let query = "UPDATE fir SET police_status=? WHERE id=?"
+            let sql = db.query(query,[status,data.id],(err,result)=>{
+                if(err) throw err
+                else{
+                    console.log(result)
+                    res.json({
+                        status:true,
+                        message:"Status Changed"
+                    })
+                }
+            })
+        }
+        catch(err){
+            res.json({
+                status:false,
+                message:"Error"
+            })
+        }
+
+    },
+    policeLogin: async function(req,res){
+        var addr = req.body.place
+        var id = req.body.id
+        console.log(addr)
+        console.log(id)
+        try{
+            let query=`SELECT * from policestation WHERE stid=? and starea=?`
+            let sql=db.query(query,[id,addr],(err,result)=>{
+              if(err)
+              {
+                throw err;
+                
+              }
+              else
+              {
+                console.log(result)
+                
+                res.json({
+                  success:true,
+                  message:"Successfull",
+                  data:result
+                })
+              }
+            })
+          }
+          catch(err){
+            res.json({
+              success:false,
+              message:"UnSuccessfull"
+            })
+          }
     }
     // InProgress:async function(req,res){
     //     var uid=req.body.userid;
